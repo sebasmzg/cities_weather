@@ -1,5 +1,6 @@
-import { ILogin } from "./model/ILogin";
+import { ILogin } from "./model/models";
 import { Controller } from "./controller/controllers";
+import Swal from "sweetalert2";
 
 const form = document.getElementById('form') as HTMLFormElement;
 const email = document.getElementById('email') as HTMLInputElement;
@@ -21,4 +22,10 @@ form.addEventListener('submit', async (e) => {
   const token = await pageController.login(formData, endpoint)
   sessionStorage.setItem('token', token.token);
   console.log('token:',token);
+  Swal.fire({
+    title: "Hello!",
+    text: "you are logged in",
+    icon: "success"
+  });
+  form.reset();
 });

@@ -1,4 +1,4 @@
-import { ILogin, IResponseLogin } from "../model/ILogin";
+import { ILogin, IResponseLogin } from "../model/models";
 
 export class Controller {
     url: string;
@@ -25,5 +25,6 @@ export class Controller {
         return token;
 
     }
+
 
 }
