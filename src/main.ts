@@ -17,15 +17,24 @@ form.addEventListener('submit', async (e) => {
     password: password.value
   };
 
-  console.log(formData);
-  const pageController = new Controller(url)
-  const token = await pageController.login(formData, endpoint)
-  sessionStorage.setItem('token', token.token);
-  console.log('token:',token);
-  Swal.fire({
-    title: "Hello!",
-    text: "you are logged in",
-    icon: "success"
-  });
-  form.reset();
+  try{
+    const pageController = new Controller(url)
+    const token = await pageController.login(formData, endpoint)
+    sessionStorage.setItem('token', token.token);
+    const getToken = sessionStorage.getItem('token');
+    //pantalla de carga
+
+    form.reset();
+    if(getToken){
+      window.location.href = './src/views/home/home.html';
+    }
+  } catch{
+    if(!email.value || !password.value){
+      Swal.fire({
+        title: "Oops!",
+        text: "Login failed, please fill in all the fields",
+        icon: "error"
+      });
+    }
+  };
 });
