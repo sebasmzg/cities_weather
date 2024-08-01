@@ -1,4 +1,4 @@
-import { ILogin } from "../model/ILogin";
+import { ILogin, IResponseLogin } from "../model/ILogin";
 
 export class Controller {
     url: string;
@@ -6,7 +6,7 @@ export class Controller {
         this.url = url;
     }
 
-    async login(data: ILogin, endpoint: string) {
+    async login(data: ILogin, endpoint: string):Promise<IResponseLogin> {
         const headers: Record<string, string> = {
             'Content-Type': 'application/json'
         }
@@ -19,8 +19,10 @@ export class Controller {
         if(res.status !== 200) {
             throw new Error('Login failed');
         }
-        const resBodyLogin: ILogin = await res.json();
-        return resBodyLogin;
+        console.log(`res.status: ${res.status}`);
+        
+        const token: IResponseLogin = await res.json();
+        return token;
 
     }
 
