@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { CitiesController } from './cities.controller';
+import { CitiesController } from './cities.crud';
 const logout = document.getElementById('logout') as HTMLButtonElement;
 const token = sessionStorage.getItem('token');
 const urlCities = 'http://localhost:3000/';
