@@ -1,0 +1,10 @@
+{
+    "cities":[
+        {
+        "name": "London",
+        "country": "GB",
+        "description": "London reseaarch",
+        "date": "2022-02-02"
+        }
+    ]
+}

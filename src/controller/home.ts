@@ -1,6 +1,23 @@
 import Swal from 'sweetalert2';
+import { CitiesController } from './cities.controller';
 const logout = document.getElementById('logout') as HTMLButtonElement;
 const token = sessionStorage.getItem('token');
+const urlCities = 'http://localhost:3000/';
+const endpointCities = 'cities';
+
+(()=>{
+    if(!token){
+        Swal.fire({
+            title: "Oops!",
+            text: "You are not logged in",
+            icon: "error",
+            background: '#fff',
+        }).then(()=>{
+            window.location.href = '/';
+        });
+        
+    }
+})();
 
 if(token){
     Swal.fire({
@@ -15,6 +32,7 @@ function logoutConfirm(){
     window.location.href = '/';
 
 }
+
 
 logout.addEventListener('click',()=>{
     Swal.fire({
@@ -32,4 +50,6 @@ logout.addEventListener('click',()=>{
     })
             
 })
-    
+
+const citiesController = new CitiesController(urlCities);
+citiesController.getCities(endpointCities)

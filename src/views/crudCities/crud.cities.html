@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./crud.cities.scss">
+    <title>Document</title>
+</head>
+<body>
+    <main class="addCity-main">
+        <h2 class="addCity-title">Add city</h2>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="../../views/home/home.html">Home</a></li>
+            <li><button id="logout">logout</button></li>
+          </ul>
+        </nav>
+        <section class="form-container">
+            <form id="addCity-form" action="">
+                <input
+                  type="text"
+                  class="addCity-input"
+                  id="new-city"
+                  placeholder="City"
+                />
+                <input
+                  type="text"
+                  class="addCity-input"
+                  id="new-country"
+                  placeholder="Country"
+                />
+                <textarea
+                  class="addCity-textarea"
+                  id="newCity-description"
+                  placeholder="Analysis description"
+                ></textarea>
+                <div class="button-container">
+                  <button type="submit" class="addCity-button">Add</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script type="module" src="../../controller/createCity.ts"></script>
+</body>
+</html>

@@ -13,4 +13,11 @@ export interface IResponseLogin {
 }
 
 
-//----- register
+//----- City
+
+export interface ICity {
+    name: string,
+    country: string,
+    description: string
+    date: Date
+}
