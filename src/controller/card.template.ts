@@ -9,11 +9,12 @@ export class CardTemplate {
     } 
 
     //metodo para crear la tarjeta
-    cardTemplate(data: ICity, temp: number){
+    cardTemplate(data: ICity, temp: number, color:string){
         //creacion de elementos, agrefar clases y contenido
 
         const cardContainer = <HTMLDivElement> document.createElement('figure');
         cardContainer.classList.add('card');
+        cardContainer.style.borderColor = color;
 
         const imgContainer = <HTMLDivElement> document.createElement('div');
         imgContainer.classList.add('card-image-container');

@@ -1,17 +1,17 @@
-import {IWeather } from "../model/models";
-
-export class TempController {
-    url: string;
-    constructor(url:string){
-        this.url = url;
-    }
-    //method to get the temp
-    async getTemp(cityName: string,apiKey:string):Promise<IWeather>{
-        const res: Response = await fetch(`${this.url}${cityName}&appid=${apiKey}`);
-        if(res.status !== 200){
-            throw new Error(`Failed to get temp. Error: ${res.status}`);
-        }
-        const temp:IWeather = await res.json();
-        return temp;
+export async function getColorByTemp(temp:number): Promise<string> {
+    const adjustedTemp = temp - 273.15;
+    switch (true) {
+        case adjustedTemp < 0:
+            return 'blue';
+        case adjustedTemp >= 0 && adjustedTemp < 15:
+            return 'green';
+        case adjustedTemp >= 15 && adjustedTemp < 25:
+            return 'yellow';
+        case adjustedTemp >= 25 && adjustedTemp < 30:
+            return 'orange';
+        case adjustedTemp >= 30:
+            return 'red';
+        default:
+            return 'black';
     }
 }
