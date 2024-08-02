@@ -9,7 +9,7 @@ export class CardTemplate {
     } 
 
     //metodo para crear la tarjeta
-    cardTemplate(data: ICity){
+    cardTemplate(data: ICity, temp: number){
         //creacion de elementos, agrefar clases y contenido
 
         const cardContainer = <HTMLElement> document.createElement('figure');
@@ -32,6 +32,10 @@ export class CardTemplate {
         const country = <HTMLElement> document.createElement('p');
         country.classList.add('card-country');
         country.textContent = data.country;
+
+        const temperature = <HTMLElement> document.createElement('p');
+        temperature.classList.add('card-temperature');
+        temperature.textContent = `${(temp-273.15).toFixed(2)}°C`;
 
         const description = <HTMLElement> document.createElement('p');
         description.classList.add('card-description');
@@ -78,8 +82,10 @@ export class CardTemplate {
         cardContainer.appendChild(editButton);
         cardContainer.appendChild(deleteButton);
         cardContainer.appendChild(infoButton);
+        cardContainer.appendChild(temperature);
 
         //agregar contenedor al contenedor principal
         this.container.appendChild(cardContainer);
     }
 }
+
