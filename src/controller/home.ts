@@ -65,7 +65,6 @@ export async function loadCityCards(){
             const res: Response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.name}&appid=a9ddd42079273baf62bb1a5f1991e805`);
             const data: IWeather = await res.json();
             const color = await getColorByTemp(data.main.temp);
-            
             const cardTemplate = new CardTemplate(citiesContainer);
             cardTemplate.cardTemplate(city, data.main.temp,color);
         });

@@ -14,7 +14,7 @@ export class CardTemplate {
 
         const cardContainer = <HTMLDivElement> document.createElement('figure');
         cardContainer.classList.add('card');
-        cardContainer.style.borderColor = color;
+        cardContainer.style.boxShadow = color;
 
         const imgContainer = <HTMLDivElement> document.createElement('div');
         imgContainer.classList.add('card-image-container');
