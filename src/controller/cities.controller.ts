@@ -1,19 +1,34 @@
 import { ICity } from "../model/models";
 import { CitiesController } from "./cities.crud";
 import Swal from "sweetalert2";
+
 //paths
 const domain = 'http://localhost:3000/';
 const endpoint = 'cities';
+
 //DOM elements
 const form = document.getElementById('addCity-form') as HTMLFormElement;
 const cityName = document.getElementById('new-city') as HTMLInputElement;
 const country = document.getElementById('new-country') as HTMLInputElement;
 const description = document.getElementById('newCity-description') as HTMLInputElement;
+
 //variable to store the id of the city to edit
 let idCache: string | undefined;
 
 //set the cityArray in local storage
-const cityArray: ICity[]= JSON.parse(localStorage.getItem('cityArray') || '[]');
+export let cityArray: ICity[]= [];
+
+//load cities from json-server
+export async function loadCities(){   
+    const controller = new CitiesController(domain);
+    try {
+        const cities = await controller.getCities(endpoint);
+        cityArray = cities;
+        localStorage.setItem('cityarray', JSON.stringify(cityArray));
+    } catch (error) {
+         console.error('Error loading cities:', error);
+    }
+}
 
 //check if there is an edit city
 const editCity = sessionStorage.getItem('editCity');
@@ -23,8 +38,10 @@ if(editCity){
     country.value = city.country;
     description.value = city.description;
 
+    idCache = city.id; //store the id of the city to edit
     sessionStorage.removeItem('editCity');
 }
+
 //event listener for the form
 form.addEventListener('submit', async(e:Event)=>{
     e.preventDefault();
@@ -47,8 +64,7 @@ form.addEventListener('submit', async(e:Event)=>{
                 text: "created!",
                 icon: "success"
             });
-        } else {
-            
+        } else { 
             await controller.editCity(newCity, endpoint, idCache);
             Swal.fire({
                 title: "City",
@@ -57,9 +73,9 @@ form.addEventListener('submit', async(e:Event)=>{
             });
             idCache = undefined;
         }
-        await controller.getCities(endpoint);
-        cityArray.push(newCity);
-        localStorage.setItem('cityArray', JSON.stringify(cityArray));
+
+        await loadCities();
+
         form.reset();
         console.log(cityArray);
     } catch (error){

@@ -79,7 +79,7 @@ export class CitiesController {
         }
         try {
             const res: Response = await fetch (`${this.url}${endpoint}/${id}`, reqOptions);
-            if(res.status !== 204){
+            if(res.status !== 200){
                 throw new Error(`Error deleting city. Error: ${res.status}`);
             }
         } catch (error){

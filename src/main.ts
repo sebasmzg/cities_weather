@@ -30,7 +30,7 @@ form.addEventListener('submit', async (e) => {
       showLoading();
       setTimeout(() => {
         window.location.href = './src/views/home/home.html';
-      }, 2000);
+      }, 1500);
     }
   } catch{
     if(!email.value || !password.value){
