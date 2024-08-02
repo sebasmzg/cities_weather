@@ -19,6 +19,7 @@ export interface ICity {
     id: string | undefined,
     name: string,
     country: string,
-    description: string
-    date: Date
+    description: string,
+    date: Date,
+    url: string
 }

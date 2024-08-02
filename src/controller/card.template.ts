@@ -12,8 +12,18 @@ export class CardTemplate {
     cardTemplate(data: ICity){
         //creacion de elementos, agrefar clases y contenido
 
-        const container = <HTMLElement> document.createElement('figure');
-        container.classList.add('card');
+        const cardContainer = <HTMLElement> document.createElement('figure');
+        cardContainer.classList.add('card');
+
+        const imgContainer = <HTMLElement> document.createElement('div');
+        imgContainer.classList.add('card-image-container');
+
+        const infoContainer = <HTMLElement> document.createElement('div');
+        infoContainer.classList.add('card-info-container');
+
+        const image = <HTMLImageElement> document.createElement('img');
+        image.classList.add('card-image');
+        image.src = data.url;
 
         const title = <HTMLElement> document.createElement('h3');
         title.classList.add('card-title');
@@ -43,15 +53,33 @@ export class CardTemplate {
         deleteButton.dataset.id = data.id;
         deleteButton.dataset.action = 'delete';
 
-        //agregar elementos al contenedor
-        container.appendChild(title);
-        container.appendChild(country);
-        container.appendChild(description);
-        container.appendChild(date);
-        container.appendChild(editButton);
-        container.appendChild(deleteButton);
+        const infoButton = <HTMLElement> document.createElement('button');
+        infoButton.classList.add('card-info');
+        infoButton.textContent = 'Info';
+        infoButton.dataset.id = data.id;
+        infoButton.dataset.action = 'info';
+
+        //info container elements
+        infoContainer.appendChild(description);
+        infoContainer.appendChild(date);
+
+        //agregar info container al contenedor principal
+        cardContainer.appendChild(infoContainer);
+
+        //agregar img al div contenedor
+        imgContainer.appendChild(image);
+
+        //agregar img al contenedor
+        cardContainer.appendChild(imgContainer);
+
+        //card container elements
+        cardContainer.appendChild(title);
+        cardContainer.appendChild(country);
+        cardContainer.appendChild(editButton);
+        cardContainer.appendChild(deleteButton);
+        cardContainer.appendChild(infoButton);
 
         //agregar contenedor al contenedor principal
-        this.container.appendChild(container);
+        this.container.appendChild(cardContainer);
     }
 }

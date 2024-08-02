@@ -11,6 +11,7 @@ const form = document.getElementById('addCity-form') as HTMLFormElement;
 const cityName = document.getElementById('new-city') as HTMLInputElement;
 const country = document.getElementById('new-country') as HTMLInputElement;
 const description = document.getElementById('newCity-description') as HTMLInputElement;
+const url = document.getElementById('new-url') as HTMLInputElement;
 
 //variable to store the id of the city to edit
 let idCache: string | undefined;
@@ -37,6 +38,7 @@ if(editCity){
     cityName.value = city.name;
     country.value = city.country;
     description.value = city.description;
+    url.value = city.url;
 
     idCache = city.id; //store the id of the city to edit
     sessionStorage.removeItem('editCity');
@@ -51,7 +53,8 @@ form.addEventListener('submit', async(e:Event)=>{
         name: cityName.value,
         country: country.value,
         description: description.value,
-        date: new Date()
+        date: new Date(),
+        url: url.value
     }
     //create a new instance of the controller
     try{
