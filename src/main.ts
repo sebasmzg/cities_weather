@@ -1,5 +1,5 @@
 import { ILogin } from "./model/models";
-import { Controller } from "./controller/controllers";
+import { Controller } from "./controller/user.controller";
 import Swal from "sweetalert2";
 
 const form = document.getElementById('form') as HTMLFormElement;

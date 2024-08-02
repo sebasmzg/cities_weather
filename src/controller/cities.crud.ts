@@ -11,13 +11,22 @@ export class CitiesController {
         if(res.status !== 200){
             throw new Error('Failed to get cities');
         }
-        const cities = await res.json();
+        const cities:ICity[] = await res.json();
         console.log(cities);
         
         return cities;
     }
+    //metodo para obtener una ciudad por id
+    async getCityById(id:string,endpoint:string):Promise<ICity>{
+        const res: Response = await fetch(`${this.url}${endpoint}/${id}`);
+        if(res.status !== 200){
+            throw new Error('Failed to get city');
+        }
+        const city: ICity = await res.json();
+        return city;
+    }
     //metodo para crear una ciudad
-    async createCity(city: ICity, endpoint: string){
+    async createCity(city: ICity,endpoint:string):Promise<ICity>{
         const reqOptions: RequestInit = {
             method: 'POST',
             headers: {
@@ -33,7 +42,7 @@ export class CitiesController {
                 throw new Error(`Failed to create city. Error: ${res.status}`);
             } 
             
-            const newCity = await res.json();
+            const newCity: ICity = await res.json();
             return newCity;
         } catch (error){
             console.error('Error creating city;', error);
@@ -41,25 +50,23 @@ export class CitiesController {
         }
     }
     //metodo para editar una ciudad
-    async editCity(city: ICity, endpoint: string){
+    async editCity(city: ICity, endpoint: string, idCache: string):Promise<ICity | undefined>{
         const reqOptions: RequestInit = {
             method: 'PUT',
-            headers: {
+            headers:{
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(city)
-        }
+            }
         try {
-
-            const res: Response = await fetch(`${this.url}${endpoint}`, reqOptions);
+            const res: Response = await fetch(`${this.url}${endpoint}/${idCache}`, reqOptions);
             if(res.status !== 200){
                 throw new Error(`Error editing city. Error: ${res.status}`);
             }
-            const editedCity = await res.json();
+            const editedCity: ICity = await res.json();
             return editedCity;
         } catch (error) {
-            console.error('Error editing city:', error);
-            throw error;
+            
         }
     }
     //metodo para eliminar una ciudad

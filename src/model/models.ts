@@ -16,6 +16,7 @@ export interface IResponseLogin {
 //----- City
 
 export interface ICity {
+    id: string | undefined,
     name: string,
     country: string,
     description: string
