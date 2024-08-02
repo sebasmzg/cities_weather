@@ -12,52 +12,52 @@ export class CardTemplate {
     cardTemplate(data: ICity, temp: number){
         //creacion de elementos, agrefar clases y contenido
 
-        const cardContainer = <HTMLElement> document.createElement('figure');
+        const cardContainer = <HTMLDivElement> document.createElement('figure');
         cardContainer.classList.add('card');
 
-        const imgContainer = <HTMLElement> document.createElement('div');
+        const imgContainer = <HTMLDivElement> document.createElement('div');
         imgContainer.classList.add('card-image-container');
 
-        const infoContainer = <HTMLElement> document.createElement('div');
+        const infoContainer = <HTMLDivElement> document.createElement('div');
         infoContainer.classList.add('card-info-container');
 
         const image = <HTMLImageElement> document.createElement('img');
         image.classList.add('card-image');
         image.src = data.url;
 
-        const title = <HTMLElement> document.createElement('h3');
+        const title = <HTMLHeadingElement> document.createElement('h3');
         title.classList.add('card-title');
         title.textContent = data.name;
 
-        const country = <HTMLElement> document.createElement('p');
+        const country = <HTMLParagraphElement> document.createElement('p');
         country.classList.add('card-country');
         country.textContent = data.country;
 
-        const temperature = <HTMLElement> document.createElement('p');
+        const temperature = <HTMLParagraphElement> document.createElement('p');
         temperature.classList.add('card-temperature');
         temperature.textContent = `${(temp-273.15).toFixed(2)}°C`;
 
-        const description = <HTMLElement> document.createElement('p');
+        const description = <HTMLParagraphElement> document.createElement('p');
         description.classList.add('card-description');
         description.textContent = data.description;
 
-        const date = <HTMLElement> document.createElement('p');
+        const date = <HTMLParagraphElement> document.createElement('p');
         date.classList.add('card-date');
         date.textContent = data.date.toString();
 
-        const editButton = <HTMLElement> document.createElement('button');
+        const editButton = <HTMLButtonElement> document.createElement('button');
         editButton.classList.add('card-edit');
         editButton.textContent = 'Edit';
         editButton.dataset.id = data.id;
         editButton.dataset.action = 'edit';
 
-        const deleteButton = <HTMLElement> document.createElement('button');
+        const deleteButton = <HTMLButtonElement> document.createElement('button');
         deleteButton.classList.add('card-delete');
         deleteButton.textContent = 'Delete';
         deleteButton.dataset.id = data.id;
         deleteButton.dataset.action = 'delete';
 
-        const infoButton = <HTMLElement> document.createElement('button');
+        const infoButton = <HTMLButtonElement> document.createElement('button');
         infoButton.classList.add('card-info');
         infoButton.textContent = 'Info';
         infoButton.dataset.id = data.id;
@@ -67,9 +67,6 @@ export class CardTemplate {
         infoContainer.appendChild(description);
         infoContainer.appendChild(date);
 
-        //agregar info container al contenedor principal
-        cardContainer.appendChild(infoContainer);
-
         //agregar img al div contenedor
         imgContainer.appendChild(image);
 
@@ -77,12 +74,12 @@ export class CardTemplate {
         cardContainer.appendChild(imgContainer);
 
         //card container elements
-        cardContainer.appendChild(title);
-        cardContainer.appendChild(country);
         cardContainer.appendChild(editButton);
         cardContainer.appendChild(deleteButton);
-        cardContainer.appendChild(infoButton);
+        cardContainer.appendChild(title);
+        cardContainer.appendChild(country);
         cardContainer.appendChild(temperature);
+        cardContainer.appendChild(infoButton);
 
         //agregar contenedor al contenedor principal
         this.container.appendChild(cardContainer);

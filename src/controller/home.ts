@@ -85,12 +85,16 @@ document.addEventListener('DOMContentLoaded', async()=>{
             const idCache = target.dataset.id;
             const info = target.dataset.info;
 
-            if(action === 'info' && info){
-                const city = await citiesController.getCityById(info, endpointCities);
+            if (action === 'info' && idCache) {
+                const city = await citiesController.getCityById(idCache, endpointCities);
                 Swal.fire({
                     title: city.name,
-                    text: `Description: ${city.description} \n Date: ${city.date}`,
-                    icon: 'info'
+                    html: `
+                        <p><strong>Description:</strong> ${city.description}</p>
+                        <p><strong>Date:</strong> ${city.date}</p>
+                    `,
+                    icon: 'info',
+                    confirmButtonText: 'Close'
                 });
             }
     
