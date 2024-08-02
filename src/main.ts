@@ -1,6 +1,7 @@
 import { ILogin } from "./model/models";
 import { Controller } from "./controller/user.controller";
 import Swal from "sweetalert2";
+import { showLoading } from "./controller/loading";
 
 const form = document.getElementById('form') as HTMLFormElement;
 const email = document.getElementById('email') as HTMLInputElement;
@@ -25,8 +26,11 @@ form.addEventListener('submit', async (e) => {
     //pantalla de carga
 
     form.reset();
-    if(getToken){
-      window.location.href = './src/views/home/home.html';
+    if (getToken) {
+      showLoading();
+      setTimeout(() => {
+        window.location.href = './src/views/home/home.html';
+      }, 2000);
     }
   } catch{
     if(!email.value || !password.value){
