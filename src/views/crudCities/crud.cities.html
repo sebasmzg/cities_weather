@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./crud.cities.scss">
+    <link rel="stylesheet" href="./crud.cities.css">
     <title>Document</title>
 </head>
 <body>
-    <main class="addCity-main">
-        <h2 class="addCity-title">Add city</h2>
-        <nav>
-          <ul class="nav-list">
-            <li><a href="../../views/home/home.html">Home</a></li>
-            <li><button id="logout">logout</button></li>
-          </ul>
-        </nav>
-        <section class="form-container">
-            <form id="addCity-form" action="">
+  <header>
+    <section class="header-container">
+      <h1 id="header">Riwi Weather</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../../views/home/home.html">Home</a></li>
+          <li><button id="logout">logout</button></li>
+        </ul>
+      </nav>
+    </section>
+  </header>
+    <main>
+      <section class="main-container">
+        <form id="addCity-form" action="">
+                <h2>Add city</h2>
                 <input
                   type="text"
                   class="addCity-input"
@@ -36,7 +41,7 @@
                 ></textarea>
                 <input type="text" id="new-url" class="addCity-input" placeholder="Image URL">
                 <div class="button-container">
-                  <button type="submit" class="addCity-button">Add</button>
+                  <button type="submit" class="addCity-button">Submit</button>
                 </div>
             </form>
         </section>

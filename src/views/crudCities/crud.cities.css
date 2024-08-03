@@ -110,6 +110,13 @@ a:hover {
 
 /* ------------------ */
 
+/* Main */
+h2{
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -120,142 +127,69 @@ main {
     padding: 2rem;
     margin-top: 4rem;
 }
-
-/* section main */
-
-/* Property */
-@property --angle {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
-}
-
-/* ---------- */
-
-/* cities container */
-
-#cities-container{
+.main-container{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
-}
-
-/* card */
-.card {
-    display: flex;
+    align-items: center;
     flex-direction: column;
+    width: 100%;
+}
+/* Form */
+
+form {
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 400px;
+    flex-direction: column;
+    width: 80%;
     padding: 2rem;
-    border-radius: 10px;
     background-color: #1c1f2b;
-    position: relative;
-    --card-color: #fff; /* temp color value */
-}
-/* card animation */
-.card:hover::after, .card:hover::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    padding: 3px;
     border-radius: 10px;
-    background-image: conic-gradient(from var(--angle), transparent, var(--card-color));
-    animation: 3s spin linear infinite;
-}
-.card::before {
-    filter: blur(1.5rem);
-    opacity: 0.5;
 }
 
-/* card button */
-
-.card-div-buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+form:hover {
+    box-shadow: 0px 0px 10px #13ced1;
 }
-.card-button{
-    display: flex;
+
+input {
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    width: 2rem;
-    height: 2rem;
-    padding: 1em 2em;
-    margin: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
     border: none;
-    border-radius: 100px;
+    border-radius: 5px;
+    background-color: #5a5a5a;
+    color: #fff;
+    font-size: 1rem;
+}
+input::placeholder {
+    color: #fff;
+}
+textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #5a5a5a;
+    color: #fff;
+}
+textarea::placeholder {
+    color: #fff;
+}
+form button {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 5px;
     background-color: #6437a0;
     color: #fff;
     cursor: pointer;
-    font-size: 1rem;
-}
-.card-button:hover {
-    box-shadow: 20px 0px 50px #13ced1, -20px 0px 50px #13ced1;
+    transition: all 0.3s;
 }
 
-
-/* card title */
-
-.card-title {
-    font-size: 1.7rem;
-    color: #fff;
-    margin: 1rem;
-}
-
-/* card description */
-.card p {
-    font-size: 1.2rem;
-    color: #fff;
-}
-/* info button */
-#info-button {
-    width: 100%;
-    padding: 1em 2em;
-    margin: 1rem;
-    border: none;
-    border-radius: 100px;
-    background-color: #6437a0;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: bold;
-    font-size: 1rem;
-}
-#info-button:hover {
-    box-shadow: 20px 0px 50px #6437a0, -20px 0px 50px #13ced1;
-    cursor: pointer;
-} 
-
-/* image container */
-
-.card-image-container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* card image */
-
-.card-image{
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-/* keyframes */
-@keyframes spin {
-    0% {
-        --angle: 0deg;
-    }
-    100% {
-        --angle: 360deg;
-    }
+form button:hover {
+    background-color: #13ced1;
+    box-shadow: 0px 0px 10px #13ced1;
+    color: #181818;
 }

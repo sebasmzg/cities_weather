@@ -5,7 +5,9 @@ export function showLoading(){
         title: 'Welcome',
         html: 'Please wait... ',
         allowOutsideClick: false,
-        showConfirmButton: false, 
+        showConfirmButton: false,
+        background: '#181818',
+        color: '#fff',
         willOpen: ()=>{
             Swal.showLoading();
         }

@@ -30,14 +30,25 @@ form.addEventListener('submit', async (e) => {
       showLoading();
       setTimeout(() => {
         window.location.href = './src/views/home/home.html';
-      }, 1500);
+      }, 1000);
     }
   } catch{
     if(!email.value || !password.value){
       Swal.fire({
         title: "Oops!",
         text: "Login failed, please fill in all the fields",
-        icon: "error"
+        icon: "error",
+        background: '#181818',
+        color: '#fff'
+      });
+    }
+    if(email.value && password.value){
+      Swal.fire({
+        title: "Oops!",
+        text: "Login failed, please check your credentials",
+        icon: "error",
+        background: '#181818',
+        color: '#fff'
       });
     }
   };

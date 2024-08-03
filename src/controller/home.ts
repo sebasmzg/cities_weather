@@ -6,7 +6,6 @@ import { getColorByTemp } from './temp.controller';
 
 
 //DOM elements
-const logout = document.getElementById('logout') as HTMLButtonElement;
 const token = sessionStorage.getItem('token');
 const citiesContainer = document.getElementById('cities-container') as HTMLDivElement;
 
@@ -28,29 +27,33 @@ const endpointCities = 'cities';
     }
 })();
 
-function logoutConfirm(){
-    sessionStorage.removeItem('token');
-    window.location.href = '/';
 
+
+/* logout function */
+export function logout(){
+    const logout = document.getElementById('logout') as HTMLButtonElement;
+    logout.addEventListener('click',()=>{
+        Swal.fire({
+            title: "Logout",
+            text: "Are you sure",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes",
+            background: '#181818',
+            color: '#fff'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                sessionStorage.removeItem('token');
+                window.location.href = '/';
+            }
+        })
+                
+    })
 }
 
-
-logout.addEventListener('click',()=>{
-    Swal.fire({
-        title: "Logout",
-        text: "Are you sure",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes"
-    }).then((result) => {
-        if (result.isConfirmed) {
-        logoutConfirm();
-        }
-    })
-            
-})
+logout();
 
 const citiesController = new CitiesController(urlCities);
 citiesController.getCities(endpointCities)
@@ -115,14 +118,18 @@ document.addEventListener('DOMContentLoaded', async()=>{
                     showCancelButton: true,
                     confirmButtonColor: "#3085d6",
                     cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes"
+                    confirmButtonText: "Yes",
+                    background: '#181818',
+                    color: '#fff'
                 }).then(async(result) => {
                     if (result.isConfirmed) {
                         await citiesController.deleteCity(idCache, endpointCities);
                         Swal.fire({
                             title: "City",
                             text: "deleted!",
-                            icon: "success"
+                            icon: "success",
+                            background: '#181818',
+                            color: '#fff'
                         }).then(async ()=>{
                             await loadCityCards();
                         })

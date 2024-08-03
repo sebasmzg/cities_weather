@@ -1,6 +1,7 @@
 import { ICity } from "../model/models";
 import { CitiesController } from "./cities.crud";
 import Swal from "sweetalert2";
+import { logout } from "./home";
 
 //paths
 const domain = 'http://localhost:3000/';
@@ -65,14 +66,18 @@ form.addEventListener('submit', async(e:Event)=>{
             Swal.fire({
                 title: "City",
                 text: "created!",
-                icon: "success"
+                icon: "success",
+                background: '#181818',
+                color: '#fff'
             });
         } else { 
             await controller.editCity(newCity, endpoint, idCache);
             Swal.fire({
                 title: "City",
                 text: "edited!",
-                icon: "success"
+                icon: "success",
+                background: '#181818',
+                color: '#fff'
             });
             idCache = undefined;
         }
@@ -86,8 +91,13 @@ form.addEventListener('submit', async(e:Event)=>{
         Swal.fire({
             title: "Error!",
             text: "Error creating city",
-            icon: "error"
+            icon: "error",
+            background: '#181818',
+            color: '#fff'
         });
     }
     
 })
+
+/* logout */
+logout();

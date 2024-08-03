@@ -46,6 +46,9 @@ export class CardTemplate {
         date.classList.add('card-date');
         date.textContent = data.date.toString();
 
+        const buttonsDiv = <HTMLDivElement> document.createElement('div');
+        buttonsDiv.classList.add('card-div-buttons');
+
         const editButton = <HTMLButtonElement> document.createElement('button');
         editButton.classList.add('card-button');
         editButton.id = 'edit-button';
@@ -74,12 +77,17 @@ export class CardTemplate {
         //agregar img al div contenedor
         imgContainer.appendChild(image);
 
+        //agregar botones al contenedor
+        cardContainer.appendChild(buttonsDiv);
+
         //agregar img al contenedor
         cardContainer.appendChild(imgContainer);
 
+        //buttons container
+        buttonsDiv.appendChild(editButton);
+        buttonsDiv.appendChild(deleteButton);        
+
         //card container elements
-        cardContainer.appendChild(editButton);
-        cardContainer.appendChild(deleteButton);
         cardContainer.appendChild(title);
         cardContainer.appendChild(country);
         cardContainer.appendChild(temperature);
