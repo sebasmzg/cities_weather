@@ -49,14 +49,14 @@ export class CardTemplate {
         const editButton = <HTMLButtonElement> document.createElement('button');
         editButton.classList.add('card-button');
         editButton.id = 'edit-button';
-        editButton.textContent = 'Edit';
+        editButton.innerHTML = '<i class="fas fa-edit"></i>';
         editButton.dataset.id = data.id;
         editButton.dataset.action = 'edit';
 
         const deleteButton = <HTMLButtonElement> document.createElement('button');
         deleteButton.classList.add('card-button');
         deleteButton.id = 'delete-button';
-        deleteButton.textContent = 'Delete';
+        deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
         deleteButton.dataset.id = data.id;
         deleteButton.dataset.action = 'delete';
 

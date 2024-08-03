@@ -33,7 +33,7 @@ header{
     width: 100%;
     padding: 1rem 2rem;
     background-color: #1c1f2b;
-    border: 2px solid #13ced1;
+    opacity: 0.9;
 }
 /* title */
 #header {
@@ -61,7 +61,7 @@ li {
 a {
     text-decoration: none;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: all 0.3s;
 }
 
@@ -99,12 +99,25 @@ main {
 
 /* section main */
 
+/* Property */
 @property --angle {
     syntax: '<angle>';
     inherits: false;
     initial-value: 0deg;
 }
 
+/* ---------- */
+
+/* cities container */
+
+#cities-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* card */
 .card {
     display: flex;
     flex-direction: column;
@@ -116,9 +129,10 @@ main {
     border-radius: 10px;
     background-color: #1c1f2b;
     position: relative;
-    --card-color: #6437a0; /* Valor predeterminado */
+    --card-color: #fff; /* temp color value */
 }
-.card::after, .card::before {
+/* card animation */
+.card:hover::after, .card:hover::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -127,21 +141,19 @@ main {
     padding: 3px;
     border-radius: 10px;
     background-image: conic-gradient(from var(--angle), transparent, var(--card-color));
-    animation: 4s spin linear infinite;
+    animation: 3s spin linear infinite;
 }
 .card::before {
     filter: blur(1.5rem);
     opacity: 0.5;
 }
 
+/* card button */
 
-input {
-    width: 100%;
-    padding: 1rem;
-    margin: 1rem 2rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.card-button {
+    
 }
+/* info button */
 #info-button {
     width: 100%;
     padding: 1em 2em;
@@ -160,6 +172,25 @@ input {
     cursor: pointer;
 } 
 
+/* image container */
+
+.card-image-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* card image */
+
+.card-image{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* keyframes */
 @keyframes spin {
     0% {
         --angle: 0deg;
