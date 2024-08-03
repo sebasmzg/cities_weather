@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./home.scss">
+    <link rel="stylesheet" href="./home.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <section class="headerTitle-container">
-          <h1 class="headerTitle">Riwi Weather</h1>
+        <section class="header-container">
+          <h1 id="header">Riwi Weather</h1>
+          <nav>
+            <ul class="nav-list">
+              <li><a href="../crudCities/crud.cities.html">Add city</a></li>
+              <li><button id="logout">logout</button></li>
+            </ul>
+          </nav>
         </section>
-        <nav>
-          <ul class="nav-list">
-            <li><a href="../crudCities/crud.cities.html">Add city</a></li>
-            <li><button id="logout">logout</button></li>
-          </ul>
-        </nav>
     </header>
     <main>
-      <section>
+      <section class="main-container">
         <div id="cities-container"></div>
       </section>
     </main>

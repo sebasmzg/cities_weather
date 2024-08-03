@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #11141d;
+}
+
+/* -------------------- */
+
+
+/* Header */
+header{
+    width: 100%;
+    background-color: #1c1f2b;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    opacity: 0.9;
+}
+/* section header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: #1c1f2b;
+    border: 2px solid #13ced1;
+}
+/* title */
+#header {
+    font-size: 2rem;
+    color: #fff;
+}
+/* nav */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+li {
+    margin: 0 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+a:hover {
+    color: #13ced1;
+}
+/* logout button */
+#logout {
+    background-color: #6437a0;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#logout:hover {
+    background-color: #13ced1;
+}
+
+
+/* ------------------ */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+/* section main */
+
+@property --angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #1c1f2b;
+    position: relative;
+    --card-color: #6437a0; /* Valor predeterminado */
+}
+.card::after, .card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    background-image: conic-gradient(from var(--angle), transparent, var(--card-color));
+    animation: 4s spin linear infinite;
+}
+.card::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+
+input {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#info-button {
+    width: 100%;
+    padding: 1em 2em;
+    margin: 1rem;
+    border: none;
+    border-radius: 100px;
+    background-color: #6437a0;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+}
+#info-button:hover {
+    box-shadow: 20px 0px 50px #6437a0, -20px 0px 50px #13ced1;
+    cursor: pointer;
+} 
+
+@keyframes spin {
+    0% {
+        --angle: 0deg;
+    }
+    100% {
+        --angle: 360deg;
+    }
+}

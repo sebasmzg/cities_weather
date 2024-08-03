@@ -19,7 +19,7 @@ body{
     height: 100vh;
     background-color: #11141d;
 }
-#header {
+.header {
     font-size: 3rem;
     margin-top: 2rem;
     color: #fff;
@@ -81,6 +81,7 @@ button {
 }
 button:hover {
     box-shadow: 20px 0px 50px #6437a0, -20px 0px 50px #13ced1;
+    cursor: pointer;
 } 
 
 @keyframes spin {

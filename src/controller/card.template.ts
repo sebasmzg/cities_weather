@@ -14,7 +14,7 @@ export class CardTemplate {
 
         const cardContainer = <HTMLDivElement> document.createElement('figure');
         cardContainer.classList.add('card');
-        cardContainer.style.boxShadow = color;
+        cardContainer.style.setProperty('--card-color', color);
 
         const imgContainer = <HTMLDivElement> document.createElement('div');
         imgContainer.classList.add('card-image-container');
@@ -47,19 +47,22 @@ export class CardTemplate {
         date.textContent = data.date.toString();
 
         const editButton = <HTMLButtonElement> document.createElement('button');
-        editButton.classList.add('card-edit');
+        editButton.classList.add('card-button');
+        editButton.id = 'edit-button';
         editButton.textContent = 'Edit';
         editButton.dataset.id = data.id;
         editButton.dataset.action = 'edit';
 
         const deleteButton = <HTMLButtonElement> document.createElement('button');
-        deleteButton.classList.add('card-delete');
+        deleteButton.classList.add('card-button');
+        deleteButton.id = 'delete-button';
         deleteButton.textContent = 'Delete';
         deleteButton.dataset.id = data.id;
         deleteButton.dataset.action = 'delete';
 
         const infoButton = <HTMLButtonElement> document.createElement('button');
-        infoButton.classList.add('card-info');
+        infoButton.classList.add('card-button');
+        infoButton.id = 'info-button';
         infoButton.textContent = 'Info';
         infoButton.dataset.id = data.id;
         infoButton.dataset.action = 'info';

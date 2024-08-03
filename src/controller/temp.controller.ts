@@ -1,17 +1,15 @@
 export async function getColorByTemp(temp:number): Promise<string> {
     const adjustedTemp = temp - 273.15;
     switch (true) {
-        case adjustedTemp < 0:
-            return 'blue';
         case adjustedTemp >= 0 && adjustedTemp < 15:
-            return 'green';
+            return 'blue';
         case adjustedTemp >= 15 && adjustedTemp < 25:
-            return 'yellow';
+            return 'green';
         case adjustedTemp >= 25 && adjustedTemp < 30:
-            return 'orange';
+            return 'yellow';
         case adjustedTemp >= 30:
             return 'red';
         default:
-            return 'black';
+            return 'white';
     }
 }
