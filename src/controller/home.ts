@@ -97,7 +97,9 @@ document.addEventListener('DOMContentLoaded', async()=>{
                         <p><strong>Date:</strong> ${city.date}</p>
                     `,
                     icon: 'info',
-                    confirmButtonText: 'Close'
+                    confirmButtonText: 'Close',
+                    background: '#181818',
+                    color: '#fff'
                 });
             }
     
